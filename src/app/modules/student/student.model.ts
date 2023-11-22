@@ -37,7 +37,8 @@ const studentSchema = new Schema<Student>({
     bloodGroup: ["A+", "B+", "A-", "B-", "O+", "O-", "AB+", "AB-"],
     avatar: {type: String},
     presentAddress: {type: String},
-    guardian: Guardian
+    guardian: Guardian,
+    isActive: ["active", "inactive"]
 })
 
-const Student = model<Student>("Student", studentSchema)
+export const StudentModel = model<Student>("Student", studentSchema)
