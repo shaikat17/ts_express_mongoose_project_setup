@@ -1,10 +1,8 @@
 import { Schema, model, connect } from "mongoose";
-import { Student } from "./student.interface";
+import { Guardian, Student, UserName } from "./student.interface";
 
-
-const studentSchema = new Schema<Student>({
-    id: {type: String},
-    name: {
+const UserName = new Schema<UserName>(
+    {
         firstName: {
             type: String,
             required: true,
@@ -17,9 +15,29 @@ const studentSchema = new Schema<Student>({
             type: String,
             required: true,
         }
-    },
+    }
+)
+
+const Guardian = new Schema<Guardian>(
+    {
+        fatherName: {type: String},
+        fatherContactNo: {type: String},
+        motherName: {type: String},
+        motherContactNo: {type: String}
+    }
+)
+
+const studentSchema = new Schema<Student>({
+    id: {type: String},
+    name: UserName,
     gender:['male', 'female'],
-    email: String,
-    contactNo: String,
-    emergacyContactNo: String
+    email: {type: String},
+    contactNo: {type: String},
+    emergencyContactNo: {type: String},
+    bloodGroup: ["A+", "B+", "A-", "B-", "O+", "O-", "AB+", "AB-"],
+    avatar: {type: String},
+    presentAddress: {type: String},
+    guardian: Guardian
 })
+
+const Student = model<Student>("Student", studentSchema)

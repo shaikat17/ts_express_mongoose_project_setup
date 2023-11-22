@@ -1,5 +1,3 @@
-import { Schema, model, connect } from "mongoose";
-
 
 export type Guardian = {
     fatherName: string;
@@ -19,7 +17,7 @@ export type Student = {
     name: UserName;
     gender: "male" | "female";
     contactNo: string;
-    emergacyContactNo: string;
+    emergencyContactNo: string;
     bloodGroup: "A+" | "B+" | "A-" | "B-" | "O+" | "O-" | "AB+" | "AB-";
     email: string;
     avatar?: string;
